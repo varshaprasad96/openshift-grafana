@@ -12,20 +12,17 @@ metadata:
 parameters:
 - description: The location of the proxy image
   name: IMAGE_GF
-  value: mrsiano/openshift-grafana:latest
-- description: External URL for the grafana route
-  name: ROUTE_URL
-  value: ""
+  value: grafana/grafana
 - description: The namespace to instantiate heapster under. Defaults to 'grafana'.
   name: NAMESPACE
-  value: grafana
+  value: openshift-marketplace
 - description: The session secret for the proxy
   name: SESSION_SECRET
   generate: expression
   from: "[a-zA-Z0-9]{43}"
 objects:
 - apiVersion: v1
-  kind: ServiceAccount
+  kind: ServiceAccount #Update with the service account created manually
   metadata:
     name: grafana-ocp
     namespace: "${NAMESPACE}"
